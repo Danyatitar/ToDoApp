@@ -1,0 +1,57 @@
+<app-header></app-header>
+<div class="body">
+  <div class="main-actions">
+    <button
+      mat-raised-button
+      color="primary"
+      class="main-btn"
+      (click)="createTask()"
+    >
+      Create task
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      class="main-btn"
+      (click)="openCategories()"
+    >
+      Categories
+    </button>
+  </div>
+  <h2 class="noTasks" *ngIf="!hasTasks">You don't have any tasks yet</h2>
+  <div class="tasks">
+    <div *ngFor="let task of tasks">
+      <mat-card class="task">
+        <mat-card-header class="header">
+          <mat-card-title class="name">{{ task.title }}</mat-card-title>
+          <mat-card-subtitle class="description"
+            >Category: {{ task.category?.name }}</mat-card-subtitle
+          >
+        </mat-card-header>
+        <mat-card-content class="content">
+          <p>Description: {{ task.description }}</p>
+          <p>Deadline: {{ task.deadline }}</p>
+          <p>Status: {{ task.status }}</p>
+        </mat-card-content>
+        <mat-card-actions class="actions">
+          <button
+            mat-raised-button
+            color="primary"
+            class="btn"
+            (click)="editTask(task.id)"
+          >
+            Edit
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+            class="btn"
+            (click)="deleteTask(task.id)"
+          >
+            Delete
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

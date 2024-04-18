@@ -1,0 +1,26 @@
+<div class="modal">
+  <h1 mat-dialog-title class="center">{{modalTitle}}</h1>
+  <div mat-dialog-content class="center">
+    <form [formGroup]="editForm" class="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error>{{ getErrorMessage("name") }}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>User</mat-label>
+        <mat-select formControlName="user">
+          @for (user of users; track user) {
+          <mat-option [value]="user.id">{{user.name}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions class="center">
+    <button mat-button color="primary" (click)="onNoClick()">Cancel</button>
+    <button mat-button color="primary" (click)="save()" cdkFocusInitial>
+      Save
+    </button>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+.center {
+  justify-content: center;
+}
+.input {
+  padding-top: 10px;
+  padding-bottom: 0;
+}
+.noTasks,
+.noCategories {
+  text-align: center;
+  font-size: 32px;
+  font-style: italic;
+  margin-top: 30px;
+}
+.main-btn {
+  width: 230px;
+  height: 50px;
+  font-size: 22px;
+}
+.main-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 50px;
+}
+.tasks {
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 1000px;
+  display: flex;
+  justify-content: start;
+  gap: 20px;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.task {
+  height: 300px;
+  width: 300px;
+}
+.name {
+  margin-top: 5px;
+  font-size: 24px;
+  font-weight: bold;
+}
+p {
+  margin: 0;
+}
+.content {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 18px;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.btn {
+  width: 100px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.modal {
+  width: 400px;
+}
+
+.category {
+  margin: 0px 10px;
+  padding: 10px;
+  border-top: 1px slid black;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+}
+
+.category-name {
+  font-size: 16px;
+  font-style: italic;
+  display: block;
+  margin: auto 0;
+}
+
+.category-actions {
+  display: flex;
+  gap: 10px;
+}
+.category-btn {
+  font-size: 14px;
+  height: 30px;
+  width: 50px;
+}
+.category-add-btn {
+  font-size: 18px;
+  height: 35px;
+  width: 100%;
+}
+
+.category-centre {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}

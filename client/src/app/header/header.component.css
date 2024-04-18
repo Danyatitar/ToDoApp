@@ -1,0 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.center {
+  justify-content: center;
+}
+.input {
+  padding-top: 10px;
+  padding-bottom: 0;
+}
+.btns {
+  display: flex;
+  gap: 10px;
+}

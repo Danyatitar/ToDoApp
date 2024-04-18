@@ -1,0 +1,93 @@
+<div class="modal">
+  <h1 mat-dialog-title class="category-centre">Categories</h1>
+  <div mat-dialog-content *ngIf="isEdit">
+    <h2 class="category-centre">Edit Category</h2>
+    <mat-form-field appearance="outline" class="category-centre">
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        [(ngModel)]="editName"
+        required
+        minlength="4"
+        name="editName"
+        #nameInput="ngModel"
+      />
+      <mat-error *ngIf="hasErrorEdit">{{errorEdit}} </mat-error>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      class="category-add-btn"
+      (click)="save()"
+    >
+      Save
+    </button>
+    <button
+      mat-raised-button
+      color="basic"
+      class="category-add-btn"
+      (click)="cancel()"
+    >
+      Cancel
+    </button>
+  </div>
+  <h2 class="noCategories" *ngIf="!hasCategories">
+    You don't have any categories yet
+  </h2>
+  <div class="categories">
+    <div *ngFor="let category of categories">
+      <div class="category">
+        <h3 class="category-name">{{category.name}}</h3>
+        <div class="category-actions">
+          <button
+            mat-raised-button
+            color="primary"
+            class="category-btn"
+            (click)="edit(category.id)"
+          >
+            Edit
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+            class="category-btn"
+            (click)="delete(category.id)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-content>
+    <h2 class="category-centre">Add Category</h2>
+    <mat-form-field appearance="outline" class="category-centre">
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        [(ngModel)]="name"
+        required
+        minlength="4"
+        name="name"
+        #nameInput="ngModel"
+      />
+      <mat-error *ngIf="hasError">{{error}} </mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      class="category-add-btn"
+      (click)="add()"
+    >
+      Add
+    </button>
+  </div>
+
+  <div mat-dialog-actions class="center">
+    <button mat-button color="primary" (click)="onNoClick()">Close</button>
+    <!-- <button mat-button color="primary" (click)="save()" cdkFocusInitial>
+        Save
+      </button> -->
+  </div>
+</div>

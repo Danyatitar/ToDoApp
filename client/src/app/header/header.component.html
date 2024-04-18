@@ -1,0 +1,25 @@
+<mat-card>
+  <mat-card-content class="header">
+    <div class="left">
+      <h1>ToDo App</h1>
+    </div>
+    <div class="btns" *ngIf="isAdmin">
+      <button mat-raised-button color="primary" (click)="toUsers()">
+        Users
+      </button>
+      <button mat-raised-button color="primary" (click)="toTasks()">
+        Tasks
+      </button>
+      <button mat-raised-button color="primary" (click)="toCategories()">
+        Categories
+      </button>
+    </div>
+    <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">
+      Profile {{ userName }}
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="changeName()">Change name</button>
+      <button (click)="logOut()" mat-menu-item>Log Out</button>
+    </mat-menu>
+  </mat-card-content>
+</mat-card>

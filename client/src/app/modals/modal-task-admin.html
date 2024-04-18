@@ -1,0 +1,56 @@
+<div class="modal">
+  <h1 mat-dialog-title class="center">{{modalTitle}}</h1>
+  <div mat-dialog-content class="center">
+    <form [formGroup]="editForm" class="form">
+      <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" />
+        <mat-error>{{ getErrorMessage("title") }}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+        <mat-error>{{ getErrorMessage("description") }}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Deadline</mat-label>
+        <input matInput type="date" formControlName="deadline" />
+        <mat-error>{{ getErrorMessage("deadline") }}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option value="waiting">Waiting</mat-option>
+          <mat-option value="in progress">In Progress</mat-option>
+          <mat-option value="completed">Completed</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+          <mat-option [value]="0">None</mat-option>
+          @for (category of categories; track category) {
+          <mat-option [value]="category.id">{{category.name}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>User</mat-label>
+        <mat-select
+          formControlName="user"
+          (selectionChange)="changeCategories($event)"
+        >
+          @for (user of users; track user) {
+          <mat-option [value]="user.id">{{user.name}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions class="center">
+    <button mat-button color="primary" (click)="onNoClick()">Cancel</button>
+    <button mat-button color="primary" (click)="save()" cdkFocusInitial>
+      Save
+    </button>
+  </div>
+</div>

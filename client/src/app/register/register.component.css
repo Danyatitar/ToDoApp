@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+.card {
+  width: 100%;
+  max-width: 600px;
+}
+.title {
+  font-weight: 700;
+  font-size: 28px;
+  margin: auto;
+}
+.container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #3f51b5;
+}
+
+.btn {
+  height: 50px;
+  margin-top: 10px;
+  font-weight: 500;
+  font-size: 18px;
+}
