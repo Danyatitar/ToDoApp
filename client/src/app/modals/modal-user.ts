@@ -70,10 +70,7 @@ export class DialogUser {
           Validators.maxLength(30),
         ],
       ],
-      password: [
-        data.user.password,
-        [Validators.required, Validators.minLength(4)],
-      ],
+      password: [data.user.password, [Validators.minLength(4)]],
       email: [data.user.email, [Validators.required, Validators.email]],
       role: [data.user.role, [Validators.required]],
     });
@@ -126,11 +123,13 @@ export class DialogUser {
   }
 
   save() {
+    console.log(this.editForm.valid);
     if (this.editForm.valid) {
       this.data.user.name = this.editForm.value.name;
       this.data.user.email = this.editForm.value.email;
       this.data.user.role = this.editForm.value.role;
       this.data.user.password = this.editForm.value.password;
+      console.log(this.data.user);
       this.dialogRef.close(this.data.user);
     }
   }

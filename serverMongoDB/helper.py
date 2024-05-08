@@ -2,15 +2,14 @@ from datetime import datetime, timedelta
 from typing import Optional
 
 import bcrypt
-from fastapi import Cookie
+from fastapi import Cookie, HTTPException
 from jwt import PyJWTError
 from jwt import decode as jwt_decode
 from jwt import encode as jwt_encode
+from pymongo import MongoClient
 
 SECRET_KEY = "todo-app-secret"
 ALGORITHM = "HS256"
-
-
 
 def hash_password(password: str) -> str:
     hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())

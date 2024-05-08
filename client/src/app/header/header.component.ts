@@ -54,8 +54,13 @@ export class HeaderComponent {
   constructor() {
     if (!this.AuthService.currentUserSig()) {
       this.http
-        .get<UserInterface>(`${this.apiUrl}/user`)
+        .get<UserInterface>(`${this.apiUrl}/user/`, {
+          headers: {
+            'Access-Control-Allow-Origin': 'http://localhost:4200',
+          },
+        })
         .subscribe((response) => {
+          console.log(response);
           this.AuthService.currentUserSig.set(response);
           this.isAdmin = response.role === 'admin';
           this.userName = response.name;

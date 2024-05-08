@@ -141,7 +141,7 @@ export class DialogTaskAdmin {
   }
 
   get deadline() {
-    return this.editForm.get('description');
+    return this.editForm.get('deadline');
   }
 
   getErrorMessage(controlName: string): string {
