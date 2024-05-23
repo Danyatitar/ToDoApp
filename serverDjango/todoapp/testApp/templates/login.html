@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="{% static "css/auth.css" %}" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div class="form-container">
+      <h1 class="text-center">Welcome back</h1>
+      <form method="post">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+      <a href="/register" class="btn btn-link">Register</a>
+    </div>
+  </body>
+</html>

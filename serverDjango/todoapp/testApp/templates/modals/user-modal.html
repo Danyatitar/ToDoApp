@@ -1,0 +1,11 @@
+<div class="form-container task-container">
+  <h1 class="text-center modal-title user-title">Create User</h1>
+  <form method="post" class="user-form">
+    {% csrf_token %} {{ forms.userForm.as_p }}
+    <div class="modal-container">
+      <button class="btn user-create-cancel modal-btn">Cancel</button>
+      <button type="submit" class="btn btn-primary modal-btn save">Save</button>
+      <button class="btn btn-primary modal-btn update hidden">Update</button>
+    </div>
+  </form>
+</div>

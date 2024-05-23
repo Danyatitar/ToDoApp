@@ -1,0 +1,10 @@
+<div class="form-container">
+  <h1 class="text-center modal-title">Change Name</h1>
+  <form method="post">
+    {% csrf_token %} {{ forms.changeNameForm.as_p }}
+    <div class="modal-container">
+      <button class="btn changeName-cancel modal-btn">Cancel</button>
+      <button type="submit" class="btn btn-primary modal-btn">Save</button>
+    </div>
+  </form>
+</div>

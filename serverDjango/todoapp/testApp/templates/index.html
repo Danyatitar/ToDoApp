@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Hello</title>
+    <link rel="stylesheet" href="{% static "css/test.css" %}" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1 class="title">{{test}}</h1>
+    {% include "header.html" %}
+  </body>
+</html>

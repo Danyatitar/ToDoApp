@@ -24,23 +24,14 @@ class User(Base):
     password = Column(String, nullable=False, unique=True)
     role = Column(Enum('admin','user', name='role_enum'))
     
-    # @validates('email')
-    # def validate_email(self, key, email):
-    #     if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-    #         raise ValueError("Invalid email address format")
-    #     return email
+
     
     @validates('name')
     def validate_name(self, key, name):
         if len(name) < 4:
             raise ValueError("Category name must be at least 4 characters long")
         return name
-    
-    # @validates('role')
-    # def validate_role(self, key, role):
-    #     if role not in ['admin', 'user']:
-    #         raise ValueError("Invalid role. Must be 'admin' or 'user'")
-    #     return role
+
 
     tasks = relationship("Task", back_populates="user")
     categories = relationship("Category", back_populates="user")

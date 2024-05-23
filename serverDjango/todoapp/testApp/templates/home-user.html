@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="{% static "css/home.css" %}" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    {% include "header.html" %}
+    <section>
+      <div class="main-container">
+        <button class="btn btn-primary main-btn task-create-btn">Create Task</button>
+        <a href='/categories'> <button class="btn btn-primary main-btn">Go to Categories</button></a>
+      </div>
+      <div class="tasks">
+         {% for task in tasks %}
+         <div class="task">
+            <div>
+              <h3 class="name">{{ task.title }}</h3>
+              <p class="description text"
+                >Category: {{ task.category.name}}</p
+              >
+            </div>
+            <div class="content">
+              <p class="text">Description: {{ task.description }}</p>
+              <p  class="text">Deadline: {{ task.deadline }}</p>
+              <p  class="text">Status: {{ task.status }}</p>
+            </div>
+            <div class="actions">
+              <button
+                class="btn btn-primary edit-task"
+                data-task-id="{{ task.id }}"
+              >
+                Edit
+              </button>
+              <button
+                class="btn btn-primary warn delete-task"
+                data-task-id="{{ task.id }}"
+              >
+                Delete
+              </button>
+            </div>
+        </div>
+         {%endfor%}
+      </div>
+    </section>
+    <div class="backdrop hidden"></div>
+    {% comment %}
+    <div class="form-container">
+      <h1 class="text-center">Welcome back</h1>
+      <form method="post">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+      <a href="/register" class="btn btn-link">Register</a>
+    </div>
+    {% endcomment %}
+    <div class='change-name-modal hidden'>
+        {% include "modals/change-name-modal.html" %}
+    </div>
+    <div class='task-modal hidden'>
+      {% include "modals/task-modal.html" %}
+  </div>
+    <script src="{% static "js/changeName.js" %}"></script>
+    <script src="{% static "js/taskForm.js" %}"></script>
+  </body>
+</html>

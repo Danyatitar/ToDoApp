@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="{% static "css/home.css" %}" />
+    <link rel="stylesheet" href="{% static "css/admin.css" %}" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    {% include "header.html" %}
+    <section>
+        <div class="main-container">
+            <button class="btn btn-primary main-btn user-create-btn">Create User</button>
+        </div>
+        <div class="custom-table-container">
+            <div class="custom-table-container">
+                <table class="custom-table">
+               
+                  <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for user in users %}
+                    <tr>
+                      <td>{{user.id}}</td>
+                      <td>{{user.name}}</td>
+                      <td>{{user.email}}</td>
+                      <td>{{user.role}}</td>
+                      <td><div class="category-actions">
+                        <button
+                          class="btn btn-primary edit-user"
+                          data-user-id="{{ user.id }}"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          class="btn btn-primary warn delete-user"
+                          data-user-id="{{ user.id }}"
+                        >
+                          Delete
+                        </button>
+                      </div></td> <!-- Button added in the new column -->
+                    </tr>
+                    {%endfor%}
+                  </tbody>
+                </table>
+              </div>
+              
+          </div>
+    </section>
+    <div class="backdrop hidden"></div>
+    {% comment %}
+    <div class="form-container">
+      <h1 class="text-center">Welcome back</h1>
+      <form method="post">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+      <a href="/register" class="btn btn-link">Register</a>
+    </div>
+    {% endcomment %}
+    <div class='change-name-modal hidden'>
+        {% include "modals/change-name-modal.html" %}
+    </div>
+    <div class='user-modal hidden'>
+      {% include "modals/user-modal.html" %}
+  </div>
+    <script src="{% static "js/changeName.js" %}"></script>
+    <script src="{% static "js/userForm.js" %}"></script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<div class="form-container">
+  <h1 class="text-center modal-title category-title">Create Category</h1>
+  <form method="post" class="category-form">
+    {% csrf_token %} {{ forms.categoryForm.as_p }}
+    <div class="modal-container">
+      <button class="btn category-create-cancel modal-btn">Cancel</button>
+      <button type="submit" class="btn btn-primary modal-btn save">Save</button>
+      <button class="btn btn-primary modal-btn update hidden">Update</button>
+    </div>
+  </form>
+</div>

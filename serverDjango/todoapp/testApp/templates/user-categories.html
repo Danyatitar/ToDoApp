@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="{% static "css/home.css" %}" />
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    {% include "header.html" %}
+    <section>
+      <div class="main-container">
+        <button class="btn btn-primary main-btn category-create-btn">Create Category</button>
+        <a href='/tasks'> <button class="btn btn-primary main-btn">Go to Tasks</button></a>
+      </div>
+      <div class="categories">
+        {% for category in categories %}
+            <div class="category">
+                <h3 class="category-name">{{ category.name }}</h3>
+                <div class="category-actions">
+                <button
+                    class="btn btn-primary edit-category"
+                    data-category-id="{{ category.id }}"
+                >
+                    Edit
+                </button>
+                <button
+                    class="btn btn-primary warn delete-category"
+                    data-category-id="{{ category.id }}"
+                >
+                    Delete
+                </button>
+                </div>
+            </div>
+         {%endfor%}
+      </div>
+    </section>
+    <div class="backdrop hidden"></div>
+
+   
+    <div class='change-name-modal hidden'>
+        {% include "modals/change-name-modal.html" %}
+    </div>
+    <div class='category-modal hidden'>
+        {% include "modals/category-modal.html" %}
+    </div>
+    <script src="{% static "js/changeName.js" %}"></script>
+    <script src="{% static "js/categoryForm.js" %}"></script>
+  </body>
+</html>

@@ -29,7 +29,7 @@ async def create_user(user: UserModelRegister):
             raise HTTPException(status_code=400, detail="Email is already registered")
 
 
-        # hashed_password = hash_password(user.password)
+    
         cursor.execute(
             "INSERT INTO users (email, password, name, role) VALUES (%s, %s, %s, %s) RETURNING id",
             (user.email, user.password, user.name, 'user')
